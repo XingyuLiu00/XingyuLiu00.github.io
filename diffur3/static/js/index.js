@@ -76,3 +76,142 @@ $(document).ready(function() {
     bulmaSlider.attach();
 
 })
+
+document.addEventListener("DOMContentLoaded", function () {
+  const samples = [
+    {
+      input: "./static/images/compare/input_01.png",
+      output: "./static/images/compare/output_01.png"
+    },
+    {
+      input: "./static/images/compare/input_02.png",
+      output: "./static/images/compare/output_02.png"
+    },
+    {
+      input: "./static/images/compare/input_03.png",
+      output: "./static/images/compare/output_03.png"
+    },
+    {
+      input: "./static/images/compare/input_04.png",
+      output: "./static/images/compare/output_04.png"
+    },
+    // {
+    //   input: "./static/images/compare/input_05.png",
+    //   output: "./static/images/compare/output_05.png"
+    // },
+    // {
+    //   input: "./static/images/compare/input_06.png",
+    //   output: "./static/images/compare/output_06.png"
+    // }
+  ];
+
+  const container = document.querySelector(".comparison-container");
+  const beforeImage = document.getElementById("comparison-before");
+  const afterImage = document.getElementById("comparison-after");
+  const afterWrapper = container.querySelector(".comparison-after-wrapper");
+  const sliderLine = container.querySelector(".comparison-slider-line");
+  const sliderHandle = container.querySelector(".comparison-slider-handle");
+  const prevButton = document.getElementById("comparison-prev");
+  const nextButton = document.getElementById("comparison-next");
+  const counter = document.getElementById("comparison-counter");
+
+  let currentIndex = 0;
+  let isDragging = false;
+
+  function syncAfterImageWidth() {
+    afterImage.style.width = `${container.offsetWidth}px`;
+  }
+
+  function resetSlider() {
+    afterWrapper.style.width = "50%";
+    sliderLine.style.left = "50%";
+    sliderHandle.style.left = "50%";
+  }
+
+  function updateCounter() {
+    counter.textContent = `${currentIndex + 1} / ${samples.length}`;
+  }
+
+  function showSample(index) {
+    currentIndex = (index + samples.length) % samples.length;
+
+    beforeImage.src = samples[currentIndex].input;
+    afterImage.src = samples[currentIndex].output;
+
+    beforeImage.onload = function () {
+      syncAfterImageWidth();
+      resetSlider();
+    };
+
+    afterImage.onload = function () {
+      syncAfterImageWidth();
+      resetSlider();
+    };
+
+    updateCounter();
+  }
+
+  function updateSlider(clientX) {
+    const rect = container.getBoundingClientRect();
+    let offsetX = clientX - rect.left;
+
+    offsetX = Math.max(0, Math.min(offsetX, rect.width));
+
+    const percent = (offsetX / rect.width) * 100;
+
+    afterWrapper.style.width = `${percent}%`;
+    sliderLine.style.left = `${percent}%`;
+    sliderHandle.style.left = `${percent}%`;
+  }
+
+  container.addEventListener("mousedown", function (e) {
+    isDragging = true;
+    updateSlider(e.clientX);
+  });
+
+  window.addEventListener("mousemove", function (e) {
+    if (!isDragging) return;
+    updateSlider(e.clientX);
+  });
+
+  window.addEventListener("mouseup", function () {
+    isDragging = false;
+  });
+
+  container.addEventListener("touchstart", function (e) {
+    isDragging = true;
+    updateSlider(e.touches[0].clientX);
+  });
+
+  window.addEventListener("touchmove", function (e) {
+    if (!isDragging) return;
+    updateSlider(e.touches[0].clientX);
+  });
+
+  window.addEventListener("touchend", function () {
+    isDragging = false;
+  });
+
+  prevButton.addEventListener("click", function () {
+    showSample(currentIndex - 1);
+  });
+
+  nextButton.addEventListener("click", function () {
+    showSample(currentIndex + 1);
+  });
+
+  document.addEventListener("keydown", function (e) {
+  if (e.key === "ArrowLeft") {
+    showSample(currentIndex - 1);
+  } else if (e.key === "ArrowRight") {
+    showSample(currentIndex + 1);
+  }
+  });
+
+  window.addEventListener("resize", function () {
+    syncAfterImageWidth();
+  });
+
+  showSample(0);
+});
+
