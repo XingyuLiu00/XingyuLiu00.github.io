@@ -291,3 +291,362 @@ body {
   padding: 2.5rem 4rem;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
 }
+
+
+
+
+
+/* Collection image */
+.collection-image-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.collection-image {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+}
+
+/* caption */
+.image-caption {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 0.5rem;
+}
+
+/* tabs */
+.dataset-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 1.2rem;
+}
+
+.dataset-tabs .button.is-active {
+  background-color: #9fc3fe;
+  color: white;
+}
+
+/* 4-image grid */
+.dataset-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* image style */
+.dataset-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  transition: transform 0.2s ease;
+}
+
+.dataset-image:hover {
+  transform: scale(1.03);
+}
+
+/* controls */
+.dataset-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 0.8rem;
+}
+
+#dataset-counter {
+  font-weight: 500;
+  color: #666;
+}
+
+/* click-to-enlarge lightbox */
+.image-lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.image-lightbox.is-active {
+  display: flex;
+}
+
+.image-lightbox-img {
+  max-width: 92vw;
+  max-height: 90vh;
+  border-radius: 12px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+}
+
+.image-lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 28px;
+  color: white;
+  font-size: 42px;
+  font-weight: 300;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.dataset-image {
+  cursor: zoom-in;
+}
+
+
+
+
+
+
+
+
+/* ================================
+   Unified Button Style
+   ================================ */
+
+:root {
+  --btn-primary: #2563eb;
+  --btn-primary-dark: #1d4ed8;
+  --btn-primary-light: #eff6ff;
+  --btn-text: #1f2937;
+  --btn-muted: #6b7280;
+  --btn-border: rgba(37, 99, 235, 0.18);
+  --btn-shadow: 0 8px 20px rgba(37, 99, 235, 0.16);
+  --btn-shadow-hover: 0 12px 28px rgba(37, 99, 235, 0.24);
+}
+
+/* 所有 Bulma button 统一基础风格 */
+.button {
+  border-radius: 999px !important;
+  border: 1px solid var(--btn-border) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%) !important;
+  color: var(--btn-text) !important;
+
+  font-weight: 600;
+  letter-spacing: 0.01em;
+
+  min-height: 2.5rem;
+  padding: 0.65rem 1.15rem;
+
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+/* hover */
+.button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(37, 99, 235, 0.35) !important;
+  box-shadow: var(--btn-shadow-hover);
+  color: var(--btn-primary) !important;
+}
+
+/* click */
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+}
+
+/* keyboard focus */
+.button:focus,
+.button:focus-visible {
+  outline: none !important;
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.18),
+    var(--btn-shadow);
+}
+
+/* 主要按钮：arXiv / 深色按钮统一成蓝色渐变 */
+.button.is-dark,
+.publication-links .button {
+  background: linear-gradient(135deg, var(--btn-primary), #3b82f6) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: var(--btn-shadow);
+}
+
+.button.is-dark:hover,
+.publication-links .button:hover {
+  background: linear-gradient(135deg, var(--btn-primary-dark), var(--btn-primary)) !important;
+  color: #ffffff !important;
+}
+
+/* Dataset tabs */
+.dataset-tabs {
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.dataset-tabs .button {
+  background: #ffffff !important;
+  color: var(--btn-muted) !important;
+  border-color: rgba(148, 163, 184, 0.35) !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+}
+
+.dataset-tabs .button:hover {
+  color: var(--btn-primary) !important;
+  background: var(--btn-primary-light) !important;
+}
+
+/* 当前激活 tab */
+.dataset-tabs .button.is-active {
+  background: linear-gradient(135deg, var(--btn-primary), #60a5fa) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: var(--btn-shadow);
+}
+
+/* Dataset Prev / Next 按钮 */
+.dataset-controls .button,
+.comparison-controls .button {
+  min-width: 92px;
+  background: #ffffff !important;
+  color: var(--btn-primary) !important;
+  border-color: rgba(37, 99, 235, 0.22) !important;
+}
+
+.dataset-controls .button:hover,
+.comparison-controls .button:hover {
+  background: var(--btn-primary-light) !important;
+  color: var(--btn-primary-dark) !important;
+}
+
+/* Counter 胶囊化 */
+#dataset-counter,
+.comparison-counter {
+  min-width: 72px;
+  text-align: center;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  background: #f8fafc;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  color: #475569;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+/* 控制区域更精致 */
+.dataset-controls,
+.comparison-controls {
+  gap: 14px;
+  margin-top: 1rem;
+}
+
+/* 顶部 Home 导航按钮也统一 */
+.navbar .navbar-item {
+  border-radius: 999px;
+  margin-top: 0.5rem;
+  padding: 0.55rem 1rem;
+  color: var(--btn-text);
+  font-weight: 600;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.navbar .navbar-item:hover {
+  background: var(--btn-primary-light);
+  color: var(--btn-primary);
+  transform: translateY(-1px);
+}
+
+/* 移动端按钮更紧凑 */
+@media screen and (max-width: 600px) {
+  .button {
+    padding: 0.55rem 0.9rem;
+    font-size: 0.9rem;
+  }
+
+  .dataset-controls,
+  .comparison-controls {
+    gap: 10px;
+  }
+
+  .dataset-controls .button,
+  .comparison-controls .button {
+    min-width: 76px;
+  }
+}
+
+
+/* BibTeX */
+.bibtex-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 0.75rem;
+}
+
+.bibtex-header .title {
+  margin-bottom: 0;
+}
+
+.bibtex-copy-btn {
+  min-width: 92px;
+}
+
+/* BibTeX copy button smooth state */
+.bibtex-copy-btn {
+  position: relative;
+  overflow: hidden;
+  min-width: 92px;
+  z-index: 0;
+}
+
+.bibtex-copy-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: -1;
+}
+
+.bibtex-copy-btn.is-copied {
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+.bibtex-copy-btn.is-copied::before {
+  opacity: 1;
+}
+
+.bibtex-copy-btn.is-failed {
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+.bibtex-copy-btn.is-failed::before {
+  opacity: 1;
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+}
+
+.bibtex-box {
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  padding: 1rem;
+  overflow-x: auto;
+}

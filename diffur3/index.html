@@ -303,16 +303,16 @@
               visibility of captured images. This practical problem lacks attention and
               needs to be resolved urgently. Prior de-raindrop, de-reflection, and
               all-in-one models have failed to address this composite degradation.
-              To this end, we first formally define the<strong>U</strong>nified <strong>R</strong>emoval of <strong>R</strong>aindrops and
+              To this end, we formally define the<strong>U</strong>nified <strong>R</strong>emoval of <strong>R</strong>aindrops and
               <strong>R</strong>eflections (<strong>UR<sup>3</sup></strong>) task for the first time and construct a
               real-shot dataset, which provides
               a new benchmark with substantial, high-quality, diverse image pairs.
               Then, we propose a novel diffusion-based framework <strong>DiffUR<sup>3</sup></strong>,
               with several target designs to address this challenging task.
-              By leveraging the powerful generative prior, <strong>DiffUR<sup>3</sup></strong>
+              By leveraging the powerful generative prior, we
               successfully removes both types of degradations. Extensive experiments
               demonstrate that our method achieves state-of-the-art performance on our
-              benchmark and on challenging in-the-wild images. 
+              benchmark and challenging in-the-wild images. 
               <!-- The RDRF dataset and the codes will be made public upon acceptance. -->
             </p>
           </div>
@@ -340,13 +340,13 @@
           <div class="comparison-container">
             <img id="comparison-before"
                  class="comparison-image comparison-before"
-                 src="./static/images/compare/input_01.png"
+                 src="./static/images/compare/output_01.png"
                  alt="Input image">
 
             <div class="comparison-after-wrapper">
               <img id="comparison-after"
                    class="comparison-image comparison-after"
-                   src="./static/images/compare/output_01.png"
+                   src="./static/images/compare/input_01.png"
                    alt="Output image">
             </div>
 
@@ -384,134 +384,94 @@
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
+      <div class="column is-full-width">
 
-      <!-- Visual Effects. -->
-      <!-- <div class="column is-centered">
-        <div class="column is-full-width">
-          <h2 class="title is-3">Visual Effects</h2>
+        <h2 class="title is-3">RDRF Dataset</h2>
+
+        <div class="content has-text-justified">
           <p>
-            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
-            would be impossible without nerfies since it would require going through a wall.
+            We introduce the <strong>R</strong>ain<strong>D</strong>rop and <strong>R</strong>e<strong>F</strong>lection dataset,
+            the first real-world benchmark for unified raindrop and reflection removal.
+            It provides paired clean and degraded images captured under controlled yet
+            realistic conditions.
           </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4"
-                    type="video/mp4">
-          </video>
         </div>
-      </div> -->
-      <!--/ Visual Effects. -->
 
-      <!-- Matting. -->
-      <!-- <div class="column is-centered">
-        <h2 class="title is-3">Matting</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              As a byproduct of our method, we can also solve the matting problem by ignoring
-              samples that fall outside of a bounding box during rendering.
-            </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
-                      type="video/mp4">
-            </video>
+        <!-- Collection -->
+        <h3 class="title is-4">Collection</h3>
+
+        <div class="content has-text-justified">
+          <p>
+            We build a controllable acquisition setup with a camera, glass slab, remote
+            shutter, and light-blocking box. Clean images are captured by suppressing
+            reflections, while degraded images are obtained by spraying water on the
+            glass and adjusting its angle to introduce realistic raindrops and reflections.
+          </p>
+        </div>
+
+        <div class="interpolation-image-wrapper">
+          <img src="./static/images/collection.png">
+        </div>
+
+        <p class="image-caption">
+          Overview of our real-world data collection setup.
+        </p>
+
+        <br>
+        <!-- /Collection -->
+
+        <br>
+
+        <!-- Samples -->
+        <h3 class="title is-4">Dataset Samples</h3>
+
+        <!-- tabs -->
+        <div class="dataset-tabs">
+          <button class="button is-rounded is-active" data-set="train">Training</button>
+          <button class="button is-rounded" data-set="test">Testing</button>
+          <button class="button is-rounded" data-set="wild">Wild</button>
+        </div>
+
+        <!-- 4-image viewer -->
+        <div class="dataset-viewer">
+
+          <div class="dataset-grid">
+            <img id="dataset-image-1" class="dataset-image">
+            <img id="dataset-image-2" class="dataset-image">
+            <img id="dataset-image-3" class="dataset-image">
+            <img id="dataset-image-4" class="dataset-image">
+          </div>
+
+          <p class="image-caption">
+          Browse samples from different subsets of our RDRF dataset.
+          </p>
+
+          <div class="dataset-controls">
+            <button class="button is-light" id="dataset-prev">&#8592;</button>
+            <span id="dataset-counter">1 / N</span>
+            <button class="button is-light" id="dataset-next">&#8594;</button>
           </div>
 
         </div>
-      </div>
-    </div> -->
-    <!--/ Matting. -->
-
-    <!-- RDRF. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">RDRF Dataset</h2>
-
-        <!-- Samples. -->
-        <h3 class="title is-4">Samples</h3>
-        <div class="content has-text-justified">
-          <p>
-            We construct the <strong>R</strong>ain<strong>D</strong>rop and <strong>R</strong>e<strong>F</strong>lection (<strong>RDRF</strong>) dataset, the first real-shot benchmark for unified raindrop and reflection removal. Each image pair contains the same background scene, with one clean image and one degraded image affected by both raindrops and reflections.
-          </p>
-        </div>
-        <div class="content has-text-centered">
-          <img id="replay-video"
-               src="./static/images/fig3.png"
-               width="100%">
-          </img>
-        </div>
-        <br/>
-        <!--/ Samples. -->
-
-        <!-- Collection. -->
-        <h3 class="title is-4">Collection</h3>
-        <div class="content has-text-justified">
-          <p>
-            The RDRF dataset was collected using a custom-built setup that captures both clean and degraded images under controlled lighting conditions.
-          </p>
-        </div>
-        <!--/ Collection. -->
-
-        <!-- Re-rendering. -->
-        <!-- <h3 class="title is-4">Re-rendering the input video</h3>
-        <div class="content has-text-justified">
-          <p>
-            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
-            viewpoint such as a stabilized camera by playing back the training deformations.
-          </p>
-        </div>
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="75%">
-            <source src="./static/videos/replay.mp4"
-                    type="video/mp4">
-          </video>
-        </div> -->
-        <!--/ Re-rendering. -->
+        <!-- Samples -->
 
       </div>
     </div>
-    <!--/ Animation. -->
-
-
-    <!-- Concurrent Work. -->
-    <!-- <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-
-        <div class="content has-text-justified">
-          <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
-          </p>
-          <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
-          </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
-          </p> -->
-        </div>
-      </div>
-    </div>
-    <!--/ Concurrent Work. -->
-
   </div>
 </section>
 
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{liu2026diffur3,
+
+    <div class="bibtex-header">
+      <h2 class="title">BibTeX</h2>
+      <button class="button bibtex-copy-btn" id="copy-bibtex-btn" type="button">
+        Copy
+      </button>
+    </div>
+
+    <pre class="bibtex-box"><code id="bibtex-code">@article{liu2026diffur3,
   author={Xingyu Liu and Zewei He and Yu Chen and Chunyu Zhu and Zixuan Chen and Xing Luo and Zhe-Ming Lu},
   title={Unified Removal of Raindrops and Reflections: A New Benchmark and A Novel Pipeline},
   year={2026},
@@ -519,13 +479,14 @@
   archivePrefix={arXiv},
   primaryClass={cs.CV}
 }</code></pre>
+
   </div>
 </section>
 
 
 <footer class="footer">
   <div class="container">
-    <div class="content has-text-centered">
+    <!-- <div class="content has-text-centered">
       <a class="icon-link"
          href="./static/videos/nerfies_paper.pdf">
         <i class="fas fa-file-pdf"></i>
@@ -533,7 +494,7 @@
       <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
         <i class="fab fa-github"></i>
       </a>
-    </div>
+    </div> -->
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
@@ -542,18 +503,24 @@
                                                 href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
             Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
-          <p>
+          <!-- <p>
             This means you are free to borrow the <a
               href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
             we just ask that you link back to this page in the footer.
             Please remember to remove the analytics code included in the header of the website which
             you do not want on your website.
-          </p>
+          </p> -->
         </div>
       </div>
     </div>
   </div>
 </footer>
+
+<!-- Image Lightbox -->
+<div id="image-lightbox" class="image-lightbox">
+  <span class="image-lightbox-close">&times;</span>
+  <img id="image-lightbox-img" class="image-lightbox-img" alt="Enlarged dataset image">
+</div>
 
 </body>
 </html>
