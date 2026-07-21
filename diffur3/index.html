@@ -116,7 +116,7 @@
               <a href="#">Zixuan Chen</a><sup>4</sup>,
             </span>
             <span class="author-block">
-              <a href="#">Xing Luo</a><sup>1</sup>,
+              <a href="#">Xing Luo</a><sup>2</sup>,
             </span>
             <span class="author-block">
               <a href="#">Zhe-Ming Lu</a><sup>1,2</sup>
@@ -124,8 +124,8 @@
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>School of Aeronautics and Astronautics, Zhejiang University</span><br>
-            <span class="author-block"><sup>2</sup>Huanjiang Laboratory</span><br>
+            <span class="author-block"><sup>1</sup>Huanjiang Laboratory</span><br>
+            <span class="author-block"><sup>2</sup>School of Aeronautics and Astronautics, Zhejiang University</span><br>
             <span class="author-block"><sup>3</sup>Hangzhou Institute of Technology, Xidian University</span><br>
             <span class="author-block"><sup>4</sup>The Chinese University of Hong Kong</span>
           </div>
@@ -186,6 +186,17 @@
                   </span>
                   <span>Data</span>
                   </a>
+              </span>
+              <!-- Supplementary Material Link. -->
+              <span class="link-block">
+                <a href="./static/Supplementary_Material.pdf"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Supplementary</span>
+                </a>
+              </span>
             </div>
 
           </div>
@@ -319,6 +330,86 @@
         </div>
       </div>
     </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+
+        <h2 class="title is-3">Pipeline</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            We introduce the <strong>R</strong>ain<strong>D</strong>rop and <strong>R</strong>e<strong>F</strong>lection dataset,
+            the first real-world benchmark for unified raindrop and reflection removal.
+            It provides paired clean and degraded images captured under controlled yet
+            realistic conditions.
+          </p>
+        </div>
+
+        <!-- Collection -->
+        <h3 class="title is-4">Collection</h3>
+
+        <div class="content has-text-justified">
+          <p>
+            We build a controllable acquisition setup with a camera, glass slab, remote
+            shutter, and light-blocking box. Clean images are captured by suppressing
+            reflections, while degraded images are obtained by spraying water on the
+            glass and adjusting its angle to introduce realistic raindrops and reflections.
+          </p>
+        </div>
+
+        <div class="interpolation-image-wrapper">
+          <img src="./static/images/collection.png">
+        </div>
+
+        <p class="image-caption">
+          Overview of our real-world data collection setup.
+        </p>
+
+        <br>
+        <!-- /Collection -->
+
+        <br>
+
+        <!-- Samples -->
+        <h3 class="title is-4">Dataset Samples</h3>
+
+        <!-- tabs -->
+        <div class="dataset-tabs">
+          <button class="button is-rounded is-active" data-set="train">Training</button>
+          <button class="button is-rounded" data-set="test">Testing</button>
+          <button class="button is-rounded" data-set="wild">Wild</button>
+        </div>
+
+        <!-- 4-image viewer -->
+        <div class="dataset-viewer">
+
+          <div class="dataset-grid">
+            <img id="dataset-image-1" class="dataset-image">
+            <img id="dataset-image-2" class="dataset-image">
+            <img id="dataset-image-3" class="dataset-image">
+            <img id="dataset-image-4" class="dataset-image">
+          </div>
+
+          <p class="image-caption">
+          Browse samples from different subsets of our RDRF dataset.
+          </p>
+
+          <div class="dataset-controls">
+            <button class="button is-light" id="dataset-prev">&#8592;</button>
+            <span id="dataset-counter">1 / N</span>
+            <button class="button is-light" id="dataset-next">&#8594;</button>
+          </div>
+
+        </div>
+        <!-- Samples -->
+
+      </div>
+    </div>
+  </div>
 </section>
 
 
