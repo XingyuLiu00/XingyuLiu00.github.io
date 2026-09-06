@@ -21,8 +21,8 @@
   </div>
 
   <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">Follow</button>
-    <ul class="author__urls social-icons">
+    <button type="button" class="btn btn--inverse author-links-toggle" aria-expanded="false" aria-controls="author-contact-links">Contact</button>
+    <ul class="author__urls social-icons" id="author-contact-links">
       <!-- Font Awesome icons / Biographic information  -->
       {% if author.location %}
         <li class="author__desktop"><i class="fas fa-fw fa-location-dot icon-pad-right" aria-hidden="true"></i>{{ author.location }}</li>
@@ -34,9 +34,10 @@
         <li><a href="{{ author.uri }}"><i class="fas fa-fw fa-link icon-pad-right" aria-hidden="true"></i>{{ site.data.ui-text[site.locale].website_label | default: "Website" }}</a></li>
       {% endif %}
       {% if author.wechat %}
-        <li>
-          <i class="fab fa-fw fa-weixin" aria-hidden="true"></i>
-          WeChat: {{ author.wechat }}
+        <li class="author__contact-start">
+          <button type="button" class="author-link-button wechat-qr-trigger" aria-haspopup="dialog" aria-controls="wechat-qr-dialog">
+            <i class="fab fa-fw fa-weixin icon-pad-right" aria-hidden="true"></i>WeChat
+          </button>
         </li>
       {% endif %}
       {% if author.email %}
@@ -51,9 +52,6 @@
       {% if author.arxiv %}
         <li><a href="{{ author.arxiv }}"><i class="ai ai-arxiv ai-fw icon-pad-right"></i>arXiv</a></li>
       {% endif %}      
-      {% if author.googlescholar %}
-        <li><a href="{{ author.googlescholar }}"><i class="ai ai-google-scholar ai-fw icon-pad-right"></i>Google Scholar</a></li>
-      {% endif %}
       {% if author.inspire-hep %}
         <li><a href="{{ author.inspire-hep }}"><i class="ai ai-inspire ai-fw icon-pad-right"></i>INSPIRE-HEP</a></li>
       {% endif %}      
@@ -180,4 +178,15 @@
       {% endif %}      
     </ul>
   </div>
+
+  {% if author.wechat %}
+    <div class="wechat-qr-modal" id="wechat-qr-dialog" role="dialog" aria-modal="true" aria-label="WeChat QR code" hidden>
+      <button type="button" class="wechat-qr-modal__backdrop" aria-label="Close WeChat QR code"></button>
+      <div class="wechat-qr-modal__panel">
+        <button type="button" class="wechat-qr-modal__close" aria-label="Close WeChat QR code">&times;</button>
+        <img src="{{ author.wechat | relative_url }}" alt="Xingyu Liu's WeChat QR code">
+      </div>
+    </div>
+    <script src="{{ '/assets/js/profile.js' | relative_url }}" defer></script>
+  {% endif %}
 </div>

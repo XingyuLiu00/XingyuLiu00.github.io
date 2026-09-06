@@ -5,32 +5,24 @@ permalink: /publications/
 author_profile: true
 ---
 
-{% if site.author.googlescholar %}
-  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
-{% endif %}
+<div class="publications-page">
+  <div class="publication-list">
+    <article class="publication-card">
+      <span class="venue-badge">ECCV '26</span>
+      <h2>Unified Removal of Raindrops and Reflections: A New Benchmark and A Novel Pipeline</h2>
+      <p class="publication-card__authors"><strong>Xingyu Liu</strong>, Zewei He, Yu Chen, Chunyu Zhu, Zixuan Chen, Xing Luo, Zhe-Ming Lu</p>
+      <p class="publication-card__venue">European Conference on Computer Vision (ECCV), 2026</p>
+    </article>
 
-{% include base_path %}
+    <article class="publication-card">
+      <span class="venue-badge">CVPR '26</span>
+      <h2>GFRRN: Explore the Gaps in Single Image Reflection Removal</h2>
+      <p class="publication-card__authors">Yu Chen, Zewei He, <strong>Xingyu Liu</strong>, Zixuan Chen, Zheming Lu</p>
+      <p class="publication-card__venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2026</p>
+    </article>
+  </div>
 
-<!-- New style rendering if publication categories are defined -->
-<!-- {% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-      {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single.html %}
-    {% endfor %}
-  {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single.html %}
-  {% endfor %}
-{% endif %}
- -->
-
-
+  {% if site.author.googlescholar %}
+    <p class="scholar-note"><i class="ai ai-google-scholar" aria-hidden="true"></i> You can also find my articles on my <a href="{{ site.author.googlescholar }}">Google Scholar profile</a>.</p>
+  {% endif %}
+</div>

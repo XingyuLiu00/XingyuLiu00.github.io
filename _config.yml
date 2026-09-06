@@ -26,12 +26,12 @@ author:
   avatar           : "profile.png"
   name             : "Xingyu Liu"
   pronouns         : # example: "she/her"  
-  bio              : "M.S. student working on computer vision and, image restoration"
+  bio              : "M.E. in Electronic Information"
   location         : "Hangzhou, China"
   employer         : "Zhejiang University"
   uri              : # URL
   email            : "xingyu_liu@zju.edu.cn" 
-  wechat           : "LiuXYuuuuuu"
+  wechat           : "/images/wechat-qr.jpg"
 
   # Academic websites
   academia         : # URL
